@@ -33,27 +33,37 @@ class AvatarsView extends GetView<AvatarsController> {
                     },
                     child: Obx(() {
                       return CircleAvatar(
-                        // radius: MediaQuery.of(context).size.width * 0.1,
-                        // backgroundImage:
-                        //     AssetImage('assets/Sprite/avatar_${index + 1}.png'),
                         backgroundColor: Color.fromARGB(255, 253, 253, 253),
-                        child: Container(
-                          width: 100,
-                          height: 100,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            image: DecorationImage(
-                              image: AssetImage(
-                                  'assets/Sprite/avatar_${index + 1}.png'),
-                              fit: BoxFit.cover,
+                        child: Stack(
+                          children: [
+                            Container(
+                              width: 100,
+                              height: 100,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                image: DecorationImage(
+                                  image: AssetImage(
+                                      'assets/Sprite/avatar_${index + 1}.png'),
+                                  fit: BoxFit.cover,
+                                ),
+                                border: Border.all(
+                                  width: 5.0,
+                                  color: controller.isSelectedList[index]
+                                      ? Colors.blue
+                                      : Colors.grey,
+                                ),
+                              ),
                             ),
-                            border: Border.all(
-                              width: 5.0,
-                              color: controller.isSelectedList[index]
-                                  ? Colors.blue
-                                  : Colors.grey,
-                            ),
-                          ),
+                            if (controller.isSelectedList[index])
+                              Positioned(
+                                bottom: 0,
+                                right: 0,
+                                child: Icon(
+                                  Icons.verified,
+                                  color: Colors.blue,
+                                ),
+                              ),
+                          ],
                         ),
                       );
                     }),
