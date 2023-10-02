@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import '../controllers/avatars_controller.dart';
 
 class AvatarsView extends GetView<AvatarsController> {
+  // final List<bool> selectedAvatars;
   const AvatarsView({Key? key}) : super(key: key);
 
   @override
@@ -14,50 +15,91 @@ class AvatarsView extends GetView<AvatarsController> {
     return MaterialApp(
       title: title,
       home: Scaffold(
-          appBar: AppBar(
-            title: const Text(title),
-          ),
-          body: Obx(() {
-            return Column(
-              children: [
-                Expanded(
-                  child: GestureDetector(
+        appBar: AppBar(
+          title: const Text(title),
+        ),
+        body: Column(
+          children: [
+            Expanded(
+              child: GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3, // Number of columns
+                ),
+                itemCount: 12, // Total number of grid items
+                itemBuilder: (context, index) {
+                  return GestureDetector(
                     onTap: () {
-                      controller.updateBorderStyle(Colors.blue, 2.0);
+                      controller.updateSelection(index);
                     },
-                    child: GridView.count(
-                      crossAxisCount: 3,
-                      children: List.generate(12, (index) {
-                        return Center(
-                          child: CircleAvatar(
-                            backgroundImage: AssetImage(
-                                'assets/Sprite/avatar_${index + 1}.png'),
-                            backgroundColor: Color.fromARGB(255, 248, 219, 242),
-                            radius: 50,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                border: Border.all(
-                                  color: controller.borderColor.value,
-                                  width: controller.borderWidth.value,
-                                ),
-                              ),
+                    child: Obx(() {
+                      return CircleAvatar(
+                        // radius: MediaQuery.of(context).size.width * 0.1,
+                        // backgroundImage:
+                        //     AssetImage('assets/Sprite/avatar_${index + 1}.png'),
+                        backgroundColor: Color.fromARGB(255, 253, 253, 253),
+                        child: Container(
+                          width: 100,
+                          height: 100,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                              image: AssetImage(
+                                  'assets/Sprite/avatar_${index + 1}.png'),
+                              fit: BoxFit.cover,
+                            ),
+                            border: Border.all(
+                              width: 5.0,
+                              color: controller.isSelectedList[index]
+                                  ? Colors.blue
+                                  : Colors.grey,
                             ),
                           ),
-                        );
-                      }),
+                        ),
+                      );
+                    }),
+                  );
+                },
+              ),
+            ),
+            SizedBox(
+              width: 200,
+              height: 0,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                // Add your button's onPressed logic here
+                print(controller.flag_avatar);
+                if (!controller.flag_avatar) {
+                  print("here is false!");
+                  showDialog<String>(
+                    context: context,
+                    builder: (BuildContext context) => AlertDialog(
+                      title: const Text(''),
+                      content: const Text('Please pick your avatar!'),
+                      actions: <Widget>[
+                        TextButton(
+                          onPressed: () => Navigator.pop(context, 'Cancel'),
+                          child: const Text('Cancel'),
+                        ),
+                        TextButton(
+                          onPressed: () => Navigator.pop(context, 'OK'),
+                          child: const Text('OK'),
+                        ),
+                      ],
                     ),
-                  ),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    Get.toNamed(Routes.CHAT_TEXT);
-                  },
-                  child: Text('Confirm'),
-                ),
-              ],
-            );
-          })),
+                  );
+                } else {
+                  Get.toNamed(Routes.CHAT_TEXT);
+                }
+              },
+              child: Text('Confirm'),
+              style: ButtonStyle(
+                minimumSize: MaterialStateProperty.all(Size(300, 30)),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
