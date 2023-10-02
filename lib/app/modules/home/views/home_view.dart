@@ -46,7 +46,7 @@ class HomeView extends GetView<HomeController> {
                   //   "",
                   //   borderRadius: 10,
                   // );
-                  Get.toNamed(Routes.Avatars);
+                  Get.toNamed(Routes.INPUT_NAME);
                 })),
                 Expanded(
                     child: makeCard(Icons.auto_graph, "Embeddings",

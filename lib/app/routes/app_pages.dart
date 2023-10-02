@@ -1,4 +1,6 @@
 import 'package:chat_gpt_flutter/app/modules/avatars/controllers/avatars_controller.dart';
+// import 'package:chat_gpt_flutter/app/modules/input_name%20copy/views/input_name_view.dart';
+import 'package:chat_gpt_flutter/app/modules/input_name/bindings/input_name_binding.dart';
 import 'package:get/get.dart';
 
 import '../modules/chat_image/bindings/chat_image_binding.dart';
@@ -10,6 +12,10 @@ import '../modules/home/views/home_view.dart';
 
 import '../modules/avatars/views/avatars_view.dart';
 import '../modules/avatars/bindings/avatars_binding.dart';
+import '../modules/input_name/views/input_name_view.dart';
+import '../modules/input_name/bindings/input_name_binding.dart';
+import '../modules/zodiac/views/zodiac_view.dart';
+import '../modules/zodiac/bindings/zodiac_binding.dart';
 
 part 'app_routes.dart';
 
@@ -35,9 +41,19 @@ class AppPages {
       binding: ChatTextBinding(),
     ),
     GetPage(
+      name: _Paths.INPUT_NAME,
+      page: () => const InputNameView(),
+      binding: InputNameBinding(),
+    ),
+    GetPage(
       name: _Paths.Avatars,
       page: () => const AvatarsView(),
       binding: AvatarsBinding(),
+    ),
+    GetPage(
+      name: _Paths.ZODIAC,
+      page: () => const ZodiacView(),
+      binding: ZodiacBinding(),
     ),
   ];
 }

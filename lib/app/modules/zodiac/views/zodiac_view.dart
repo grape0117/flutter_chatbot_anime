@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:chat_gpt_flutter/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 
-import '../controllers/avatars_controller.dart';
+import '../controllers/zodiac_controller.dart';
 
-class AvatarsView extends GetView<AvatarsController> {
+class ZodiacView extends GetView<ZodiacController> {
   // final List<bool> selectedAvatars;
-  const AvatarsView({Key? key}) : super(key: key);
+  const ZodiacView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    const title = 'Pick your avatar';
+    const title = 'Pick your zodiac';
 
     return MaterialApp(
       title: title,
@@ -84,7 +84,7 @@ class AvatarsView extends GetView<AvatarsController> {
                   showDialog<String>(
                     context: context,
                     builder: (BuildContext context) => AlertDialog(
-                      title: const Text('Notification!'),
+                      title: const Text(''),
                       content: const Text('Please pick your avatar!'),
                       actions: <Widget>[
                         TextButton(
@@ -99,7 +99,7 @@ class AvatarsView extends GetView<AvatarsController> {
                     ),
                   );
                 } else {
-                  Get.toNamed(Routes.ZODIAC);
+                  Get.toNamed(Routes.CHAT_TEXT);
                 }
               },
               child: Text('Confirm'),
