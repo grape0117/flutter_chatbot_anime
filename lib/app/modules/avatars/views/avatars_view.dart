@@ -16,8 +16,15 @@ class AvatarsView extends GetView<AvatarsController> {
       title: title,
       home: Scaffold(
         appBar: AppBar(
-          title: const Text(title),
-        ),
+            title: const Text(title),
+            leading: IconButton(
+              onPressed: () {
+                // Navigator.pop(context);
+                Get.toNamed(Routes.INPUT_NAME);
+              },
+              icon: Icon(Icons.arrow_back_ios),
+              //replace with our own icon data.
+            )),
         body: Column(
           children: [
             Expanded(

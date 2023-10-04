@@ -17,8 +17,15 @@ class InputNameView extends GetView<InputNameController> {
       title: title,
       home: Scaffold(
         appBar: AppBar(
-          title: const Text(''),
-        ),
+            title: const Text(title),
+            leading: IconButton(
+              onPressed: () {
+                // Navigator.pop(context);
+                // Get.toNamed(Routes.Avatars);
+              },
+              icon: Icon(Icons.arrow_back_ios),
+              //replace with our own icon data.
+            )),
         body: Center(
           child: Column(children: [
             SizedBox(width: 300, height: 100),
