@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
-class PickModelController extends GetxController {
+class PurchaseController extends GetxController {
   RxList<bool> isSelectedList = List.generate(4, (index) => false).obs;
   RxInt index = 0.obs;
 

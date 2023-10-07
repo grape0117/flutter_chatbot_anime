@@ -17,6 +17,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.11.0"
+  badges:
+    dependency: "direct main"
+    description:
+      name: badges
+      sha256: "727580d938b7a1ff47ea42df730d581415606b4224cfa708671c10287f8d3fe6"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.3"
+  banner_listtile:
+    dependency: "direct main"
+    description:
+      name: banner_listtile
+      sha256: "8a8b9f6712a51147cf0eb9b57c58233b5154e5d88b672df83bc23a4479701757"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.3.0"
   boolean_selector:
     dependency: transitive
     description:
@@ -384,6 +400,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.2.4"
+  profile_photo:
+    dependency: "direct main"
+    description:
+      name: profile_photo
+      sha256: "8cb2d1e4af2525343c9f27ca23b07489f676cd1474a03be6446d45dc0f359f4f"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.3"
   rxdart:
     dependency: transitive
     description:

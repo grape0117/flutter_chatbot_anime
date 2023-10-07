@@ -31,6 +31,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  profile_photo: ^1.0.1
+  badges: ^2.0.1
+  banner_listtile: ^2.3.0
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -85,18 +88,71 @@ flutter:
     - assets/Sprite/avatar_12.png
     
     # zodiacs
-    - asseets/Sprite/img_constellation_Aquarius.png
-    - asseets/Sprite/img_constellation_Aries.png
-    - asseets/Sprite/img_constellation_Cancer.png
-    - asseets/Sprite/img_constellation_Capricorn.png
-    - asseets/Sprite/img_constellation_Gemini.png
-    - asseets/Sprite/img_constellation_Leo.png
-    - asseets/Sprite/img_constellation_Libra.png
-    - asseets/Sprite/img_constellation_Pisces.png
-    - asseets/Sprite/img_constellation_Sagittarius.png
-    - asseets/Sprite/img_constellation_Scorpio.png
-    - asseets/Sprite/img_constellation_Taurus.png
-    - asseets/Sprite/img_constellation_Virgo.png
+    - assets/Sprite/img_constellation_Aquarius.png
+    - assets/Sprite/img_constellation_Aries.png
+    - assets/Sprite/img_constellation_Cancer.png
+    - assets/Sprite/img_constellation_Capricorn.png
+    - assets/Sprite/img_constellation_Gemini.png
+    - assets/Sprite/img_constellation_Leo.png
+    - assets/Sprite/img_constellation_Libra.png
+    - assets/Sprite/img_constellation_Pisces.png
+    - assets/Sprite/img_constellation_Sagittarius.png
+    - assets/Sprite/img_constellation_Scorpio.png
+    - assets/Sprite/img_constellation_Taurus.png
+    - assets/Sprite/img_constellation_Virgo.png
+
+    # taskbar icons
+    - assets/Sprite/taskbar/icon_tabbar_card_selected.png
+    - assets/Sprite/taskbar/icon_tabbar_card_unselected.png
+    - assets/Sprite/taskbar/icon_tabbar_chat_selected.png
+    - assets/Sprite/taskbar/icon_tabbar_chat_unselected.png
+    - assets/Sprite/taskbar/icon_tabbar_setting_selected.png
+    - assets/Sprite/taskbar/icon_tabbar_setting_unselected.png
+    - assets/Sprite/taskbar/icon_tabbar_shop_selected.png
+    - assets/Sprite/taskbar/icon_tabbar_shop_unselected.png
+
+    # info page
+    - assets/Sprite/info/img_encourage.png
+    - assets/Sprite/info/img_gem.png
+    - assets/Sprite/info/img_nativeshare.png
+    - assets/Sprite/info/img_PrivacPolicy.png
+    - assets/Sprite/info/img_termsofuse.png
+    - assets/Sprite/info/img_contact.png
+    - assets/Sprite/info/img_addIcon.png
+    - assets/Sprite/info/img_editor.png
+    # - assets/Sprite/info/img_shopbundle_zuanshi.png
+
+    # purchase page
+    - assets/Sprite/purchase/bg_premium.png
+    - assets/Sprite/purchase/img_gems_gemSlot_shop_01.png
+    - assets/Sprite/purchase/img_gems_gemSlot_shop_02.png
+    - assets/Sprite/purchase/img_gems_gemSlot_shop_03.png
+    - assets/Sprite/purchase/img_gems_gemSlot_shop_04.png
+    - assets/Sprite/purchase/img_gems_gemSlot_shop_05.png
+    - assets/Sprite/purchase/img_gems_gemSlot_shop_06.png
+    - assets/Sprite/purchase/img_limitOffer_shop.png
+    - assets/Sprite/purchase/img_shopbundle_bg.png
+    - assets/Sprite/purchase/icon_singleGem_purple.png
+    - assets/Sprite/purchase/img_shopbundle_tag.png
+    - assets/Sprite/purchase/img_shop_slot_label.png
+    - assets/Sprite/purchase/chat_diamond@1x.png
+    - assets/Sprite/purchase/icon_chat_Stopwatch.png
+    - assets/Sprite/purchase/shop_image_freeGemsTitle.png
+    - assets/Sprite/purchase/shop_image_gemsTItle.png
+    - assets/Sprite/purchase/shop_image_offerTitle.png
+    - assets/Sprite/purchase/img_bg_shopSlot_blue.png
+    - assets/Sprite/purchase/shop_btn_bg_rewardAds.png
+    
+    # premium page
+    - assets/Sprite/premium/bg_primium_large.png
+    - assets/Sprite/premium/bg_continue.png
+    - assets/Sprite/premium/img_primium_text.png
+    - assets/Sprite/premium/icon_right.png
+
+
+
+    # giftbox
+    - assets/Sprite/img_btn_gift_main.png
 
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg

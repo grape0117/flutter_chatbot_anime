@@ -86,30 +86,68 @@ class ZodiacView extends GetView<ZodiacController> {
                                     ],
                                   ),
                                 ),
-                                if (controller.isSelectedList[index])
-                                  Positioned.fill(
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(10),
-                                        border: Border.all(
-                                          width: 3,
-                                          color: Colors.blue,
+                                // Align(
+                                //   alignment: Alignment.center,
+                                //   child: Column(
+                                //     mainAxisAlignment: MainAxisAlignment.center,
+                                //     children: [
+                                //       Text(
+                                //         'Image Title',
+                                //         style: TextStyle(
+                                //           fontSize: 16,
+                                //           fontWeight: FontWeight.bold,
+                                //         ),
+                                //       ),
+                                //     ],
+                                //   ),
+                                // ),
+                                Positioned(
+                                  bottom: 0,
+                                  left: 0,
+                                  right: 0,
+                                  child: Container(
+                                      padding: EdgeInsets.all(8),
+                                      // color: Colors.black.withOpacity(0.5),
+                                      child: Align(
+                                        child: Text(
+                                          zodiacs[index],
+                                          style: TextStyle(
+                                            color: const Color.fromARGB(
+                                                255, 51, 51, 51),
+                                            fontSize: 16,
+                                            // fontWeight: FontWeight.bold,
+                                          ),
                                         ),
-                                      ),
-                                    ),
-                                  ),
-                                SizedBox(
-                                  height: 8,
+                                      )),
                                 ),
                                 if (controller.isSelectedList[index])
                                   Positioned(
                                     bottom: 0,
                                     right: 0,
-                                    child: Icon(
-                                      Icons.verified,
-                                      color: Colors.blue,
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.end,
+                                      children: [
+                                        Container(
+                                            // decoration: BoxDecoration(
+                                            //   borderRadius:
+                                            //       BorderRadius.circular(10),
+                                            //   border: Border.all(
+                                            //     width: 3,
+                                            //     color: Colors.blue,
+                                            //   ),
+                                            // ),
+                                            ),
+                                        Icon(
+                                          Icons.verified,
+                                          color: Colors.blue,
+                                        ),
+                                      ],
                                     ),
                                   ),
+                                SizedBox(
+                                  height: 8,
+                                ),
                               ],
                             ),
                           );
@@ -146,7 +184,7 @@ class ZodiacView extends GetView<ZodiacController> {
                         ),
                       );
                     } else {
-                      Get.toNamed(Routes.CHAT_TEXT);
+                      Get.toNamed(Routes.PICK_MODEL);
                     }
                   },
                   child: Text('Confirm'),

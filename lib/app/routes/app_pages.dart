@@ -16,6 +16,14 @@ import '../modules/input_name/views/input_name_view.dart';
 import '../modules/input_name/bindings/input_name_binding.dart';
 import '../modules/zodiac/views/zodiac_view.dart';
 import '../modules/zodiac/bindings/zodiac_binding.dart';
+import '../modules/pick_model/views/pick_model_view.dart';
+import '../modules/pick_model/bindings/pick_model_binding.dart';
+import '../modules/info/views/info_view.dart';
+import '../modules/info/bindings/info_binding.dart';
+import '../modules/purchase/views/purchase_view.dart';
+import '../modules/purchase/bindings/purchase_binding.dart';
+import '../modules/premium/views/premium_view.dart';
+import '../modules/premium/bindings/premium_binding.dart';
 
 part 'app_routes.dart';
 
@@ -54,6 +62,26 @@ class AppPages {
       name: _Paths.ZODIAC,
       page: () => const ZodiacView(),
       binding: ZodiacBinding(),
+    ),
+    GetPage(
+      name: _Paths.PICK_MODEL,
+      page: () => const PickModelView(),
+      binding: PickModelBinding(),
+    ),
+    GetPage(
+      name: _Paths.INFO,
+      page: () => const InfoView(),
+      binding: InfoBinding(),
+    ),
+    GetPage(
+      name: _Paths.PURCHASE,
+      page: () => const PurchaseView(),
+      binding: PurchaseBinding(),
+    ),
+    GetPage(
+      name: _Paths.PREMIUM,
+      page: () => const PremiumView(),
+      binding: PremiumBinding(),
     ),
   ];
 }
