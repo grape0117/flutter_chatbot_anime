@@ -1,3 +1,4 @@
+import 'package:chat_gpt_flutter/app/model/Profile.dart';
 import 'package:chat_gpt_flutter/app/modules/chat_text/views/widgets/text_card.dart';
 import 'package:flutter/material.dart';
 
@@ -13,11 +14,6 @@ class ChatTextView extends GetView<ChatTextController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.green.withOpacity(0.8),
-        title: const Text('Chat GPT Text'),
-        centerTitle: true,
-      ),
       body: Obx(() => Column(children: [
             Expanded(
               child: ListView.builder(
@@ -26,8 +22,26 @@ class ChatTextView extends GetView<ChatTextController> {
                 itemBuilder: (BuildContext context, int index) {
                   final textData = controller.messages[index];
                   return textData.index == -999999
-                      ? MyTextCard(textData: textData)
-                      : TextCard(textData: textData);
+                      ? MyTextCard(
+                          textData: textData,
+                          profile: Profile(
+                              name: 'name',
+                              description: 'description',
+                              avatarAsset:
+                                  'assets/Sprite/zodiac/img_constellation_Aquarius.png',
+                              zodiacAsset: 'zodiacAsset',
+                              message: 'message'),
+                        )
+                      : TextCard(
+                          textData: textData,
+                          profile: Profile(
+                              name: 'name',
+                              description: 'description',
+                              avatarAsset:
+                                  'assets/Sprite/zodiac/img_constellation_Aquarius.png',
+                              zodiacAsset: 'zodiacAsset',
+                              message: 'message'),
+                        );
                 },
               ),
             ),

@@ -1,6 +1,6 @@
-import 'package:chat_gpt_flutter/app/modules/avatars/controllers/avatars_controller.dart';
+// import 'package:chat_gpt_flutter/app/modules/avatars/controllers/avatars_controller.dart';
 // import 'package:chat_gpt_flutter/app/modules/input_name%20copy/views/input_name_view.dart';
-import 'package:chat_gpt_flutter/app/modules/input_name/bindings/input_name_binding.dart';
+import 'package:chat_gpt_flutter/app/modules/user/bindings/user_binding.dart';
 import 'package:get/get.dart';
 
 import '../modules/chat_image/bindings/chat_image_binding.dart';
@@ -10,20 +10,23 @@ import '../modules/chat_text/views/chat_text_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 
-import '../modules/avatars/views/avatars_view.dart';
-import '../modules/avatars/bindings/avatars_binding.dart';
-import '../modules/input_name/views/input_name_view.dart';
-import '../modules/input_name/bindings/input_name_binding.dart';
-import '../modules/zodiac/views/zodiac_view.dart';
-import '../modules/zodiac/bindings/zodiac_binding.dart';
-import '../modules/pick_model/views/pick_model_view.dart';
-import '../modules/pick_model/bindings/pick_model_binding.dart';
+import '../model/Profile.dart';
+
+import '../modules/user/views/avatars_view.dart';
+import '../modules/user/views/input_name_view.dart';
+import '../modules/user/views/zodiac_view.dart';
 import '../modules/info/views/info_view.dart';
 import '../modules/info/bindings/info_binding.dart';
 import '../modules/purchase/views/purchase_view.dart';
 import '../modules/purchase/bindings/purchase_binding.dart';
 import '../modules/premium/views/premium_view.dart';
 import '../modules/premium/bindings/premium_binding.dart';
+import '../modules/chat_page/views/chat_page_view.dart';
+import '../modules/chat_page/bindings/chat_page_binding.dart';
+import '../modules/pick_bot/views/pick_bot_view.dart';
+import '../modules/pick_bot/bindings/pick_bot_binding.dart';
+import '../modules/view_profile/views/view_profile_view.dart';
+import '../modules/view_profile/bindings/view_profile_binding.dart';
 
 part 'app_routes.dart';
 
@@ -64,11 +67,6 @@ class AppPages {
       binding: ZodiacBinding(),
     ),
     GetPage(
-      name: _Paths.PICK_MODEL,
-      page: () => const PickModelView(),
-      binding: PickModelBinding(),
-    ),
-    GetPage(
       name: _Paths.INFO,
       page: () => const InfoView(),
       binding: InfoBinding(),
@@ -82,6 +80,40 @@ class AppPages {
       name: _Paths.PREMIUM,
       page: () => const PremiumView(),
       binding: PremiumBinding(),
+    ),
+    GetPage(
+      name: _Paths.CHATPAGE,
+      page: () => const ChatPageView(
+        profile: Profile(
+            name: 'name',
+            description: 'description',
+            avatarAsset: 'avatarAsset',
+            zodiacAsset: 'zodiacAsset',
+            message: 'message'),
+      ),
+      binding: ChatPageBinding(),
+    ),
+    // GetPage(
+    //   name: _Paths.NOFRIENDSLIST,
+    //   page: () => const NoFriendsListView(),
+    //   binding: NoFriendsListBinding(),
+    // ),
+    GetPage(
+      name: _Paths.PICKBOT,
+      page: () => const PickBotView(),
+      binding: PickBotBinding(),
+    ),
+    GetPage(
+      name: _Paths.VIEWPROFILE,
+      page: () => const ViewProfileView(
+        profile: Profile(
+            name: 'name',
+            description: 'description',
+            avatarAsset: 'avatarAsset',
+            zodiacAsset: 'zodiacAsset',
+            message: 'message'),
+      ),
+      binding: ViewProfileBinding(),
     ),
   ];
 }

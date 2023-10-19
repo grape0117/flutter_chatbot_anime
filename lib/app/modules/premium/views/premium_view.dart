@@ -196,12 +196,18 @@ class PremiumView extends GetView<PremiumController> {
                         )),
                     Container(
                         width: 350,
-                        child: Center(
-                          child: Text(
-                            'NO THANKS',
-                            style: TextStyle(
-                              color: Color.fromARGB(179, 255, 255, 255),
-                              fontSize: 15,
+                        child: GestureDetector(
+                          onTap: () {
+                            // print('object');
+                            Get.back();
+                          },
+                          child: Center(
+                            child: Text(
+                              'NO THANKS',
+                              style: TextStyle(
+                                color: Color.fromARGB(179, 255, 255, 255),
+                                fontSize: 15,
+                              ),
                             ),
                           ),
                         )),

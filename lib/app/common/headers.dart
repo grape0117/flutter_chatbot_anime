@@ -1,7 +1,7 @@
 const String OPEN_AI_KEY =
-    "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";
+    "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";
 
-const String baseURL = "https://api.openai.com/v1";
+const String baseURL = "https://api.openai.com/v1/chat";
 
 String endPoint(String endPoint) => "$baseURL/$endPoint";
 

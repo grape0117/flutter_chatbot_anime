@@ -3,7 +3,7 @@ part of 'app_pages.dart';
 
 abstract class Routes {
   Routes._();
-  static const HOME = _Paths.PURCHASE;
+  static const HOME = _Paths.INPUT_NAME;
   static const CHAT_IMAGE = _Paths.CHAT_IMAGE;
   static const CHAT_TEXT = _Paths.CHAT_TEXT;
   static const INPUT_NAME = _Paths.INPUT_NAME;
@@ -13,6 +13,9 @@ abstract class Routes {
   static const INFO = _Paths.INFO;
   static const PURCHASE = _Paths.PURCHASE;
   static const PREMIUM = _Paths.PREMIUM;
+  static const CHATPAGE = _Paths.CHATPAGE;
+  static const PICKBOT = _Paths.PICKBOT;
+  static const VIEWPROFILE = _Paths.VIEWPROFILE;
 }
 
 abstract class _Paths {
@@ -27,4 +30,7 @@ abstract class _Paths {
   static const INFO = '/info';
   static const PURCHASE = '/purchase';
   static const PREMIUM = '/premium';
+  static const CHATPAGE = '/chatpage';
+  static const PICKBOT = '/pickbot';
+  static const VIEWPROFILE = '/viewprofile';
 }

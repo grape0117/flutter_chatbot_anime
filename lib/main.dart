@@ -12,11 +12,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
+
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Chat GPT -Flutter',
+      title: 'Anime Chat GPT',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.pink,
       ),
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
