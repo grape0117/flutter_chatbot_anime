@@ -24,7 +24,7 @@ class HomeView extends GetView<HomeController> {
                         Icons.text_fields_sharp,
                         "Text2323323 completion",
                         Colors.green.withOpacity(0.5), () {
-                  Get.toNamed(Routes.CHAT_TEXT);
+                  // Get.toNamed(Routes.CHAT_TEXT);
                 })),
                 Expanded(
                     child: makeCard(Icons.image, "Image generation",

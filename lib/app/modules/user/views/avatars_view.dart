@@ -7,6 +7,8 @@ import '../../../model/user_info.dart';
 
 class AvatarsView extends GetView<UserController> {
   // final List<bool> selectedAvatars;
+  // final UseController draggableController =
+  //     Get.put(DraggableController());
   const AvatarsView({Key? key}) : super(key: key);
 
   @override

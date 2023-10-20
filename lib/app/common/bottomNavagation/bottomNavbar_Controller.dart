@@ -1,3 +1,4 @@
+import 'package:chat_gpt_flutter/app/model/Profile.dart';
 import 'package:chat_gpt_flutter/app/modules/user/controllers/user_controller.dart';
 import 'package:get/get.dart';
 
@@ -16,7 +17,14 @@ class BottomNavbarController extends GetxController {
     index.value = selectedindex;
     print("BottomNavbar $index  ");
     if (index.value == 0) {
-      Get.to(() => PickBotView());
+      Get.to(() => PickBotView(
+            profile: Profile(
+                name: 'name',
+                description: 'description',
+                avatarAsset: 'avatarAsset',
+                zodiacAsset: 'zodiacAsset',
+                message: 'message'),
+          ));
     } else if (index.value == 1) {
       // Get.toNamed(Routes.NOFRIENDSLIST);
       Get.to(() => NoFriendsListView());

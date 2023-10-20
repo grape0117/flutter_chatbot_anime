@@ -2,8 +2,8 @@ import 'package:chat_gpt_flutter/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../model/Profile.dart';
-import '../../../view_profile/views/view_profile_view.dart';
+import '../../../model/Profile.dart';
+import '../../view_profile/views/view_profile_view.dart';
 
 class ProfileCard extends StatelessWidget {
   const ProfileCard({Key? key, required this.profile}) : super(key: key);
@@ -14,8 +14,8 @@ class ProfileCard extends StatelessWidget {
     return Column(
       children: [
         Container(
-          // margin: EdgeInsets.symmetric(
-          //     horizontal: MediaQuery.of(context).size.width * 0.1),
+          margin: EdgeInsets.symmetric(
+              horizontal: MediaQuery.of(context).size.width * 0.1),
           // padding: EdgeInsets.symmetric(horizontal: 20),
           decoration: BoxDecoration(
               boxShadow: [

@@ -5,15 +5,14 @@ import 'dart:async';
 import 'package:chat_gpt_flutter/app/routes/app_pages.dart';
 
 import '../../../model/Profile.dart';
-import '../../../modules/user/controllers/user_controller.dart';
 
 class PickBotController extends GetxController {
-  // UserController userController = Get.find<UserController>();
+  UserController get userController => Get.find<UserController>();
 
   @override
   void onInit() {
     super.onInit();
-    // checkPremium();
+    checkPremium();
   }
 
   @override
@@ -22,16 +21,16 @@ class PickBotController extends GetxController {
     print('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
   }
 
-  // void checkPremium() {
-  //   Future.delayed(Duration(seconds: 3), () {
-  //     if (userController.user.premium_status == false) {
-  //       Get.toNamed(Routes.PREMIUM);
-  //       // print('HEre');
-  //     } else {
-  //       return;
-  //     }
-  //   });
-  // }
+  void checkPremium() {
+    Future.delayed(Duration(seconds: 3), () {
+      if (userController.user.premium_status == false) {
+        Get.toNamed(Routes.PREMIUM);
+        // print('HEre');
+      } else {
+        return;
+      }
+    });
+  }
 
   final List<Profile> dragabbleItems = [
     Profile(

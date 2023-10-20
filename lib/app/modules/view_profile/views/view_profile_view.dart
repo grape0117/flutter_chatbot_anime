@@ -1,9 +1,16 @@
 import 'package:chat_gpt_flutter/app/model/Profile.dart';
-import 'package:flutter/material.dart';
+import 'package:chat_gpt_flutter/app/modules/chat_text/controllers/chat_text_controller.dart';
+import 'package:chat_gpt_flutter/app/modules/chat_text/views/chat_text_view.dart';
+import 'package:chat_gpt_flutter/app/modules/pick_bot/views/pick_bot_view.dart';
+import 'package:chat_gpt_flutter/app/modules/pick_bot/views/widget/CardsStackWidget_controller.dart';
 import 'package:chat_gpt_flutter/app/routes/app_pages.dart';
+import 'package:flutter/material.dart';
+// import 'package:chat_gpt_flutter/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 
 import '../controllers/view_profile_controller.dart';
+// import '../../chat_text/views/chat_text_view.dart';
+import '../../no_model/views/no_model_view.dart';
 
 class ViewProfileView extends GetView<ViewProfileController> {
   // final List<bool> selectedAvatars;
@@ -192,7 +199,30 @@ class ViewProfileView extends GetView<ViewProfileController> {
                         Expanded(
                             child: GestureDetector(
                                 onTap: () {
-                                  print('----------skip');
+                                  print('--------sdfsdfsd-----skip');
+                                  final CardsStackWidgetController
+                                      cardsStackWidgetController =
+                                      Get.put(CardsStackWidgetController());
+                                  cardsStackWidgetController.models
+                                      .removeLast();
+                                  Get.to(PickBotView(
+                                      profile: cardsStackWidgetController
+                                          .models.last));
+                                  if (cardsStackWidgetController
+                                          .models.length ==
+                                      0) {
+                                    cardsStackWidgetController.models.add(
+                                        Profile(
+                                            name: '',
+                                            description: '',
+                                            avatarAsset: '',
+                                            zodiacAsset: '',
+                                            message: ''));
+                                    ;
+                                    Get.to(() => NoModelView());
+                                    cardsStackWidgetController.models
+                                        .removeLast();
+                                  }
                                 },
                                 child: Image.asset(
                                   'assets/Sprite/pick_model/profile_btn_dislike_bg.png',
@@ -203,6 +233,9 @@ class ViewProfileView extends GetView<ViewProfileController> {
                             child: GestureDetector(
                                 onTap: () {
                                   print('--------------like');
+                                  print('object');
+                                  Get.put(ChatTextController());
+                                  Get.to(ChatTextView(profile: profile));
                                 },
                                 child: Image.asset(
                                   'assets/Sprite/pick_model/profile_bgn_like_bg.png',

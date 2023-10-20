@@ -16,6 +16,7 @@ abstract class Routes {
   static const CHATPAGE = _Paths.CHATPAGE;
   static const PICKBOT = _Paths.PICKBOT;
   static const VIEWPROFILE = _Paths.VIEWPROFILE;
+  static const NOMODEL = _Paths.NOMODEL;
 }
 
 abstract class _Paths {
@@ -33,4 +34,5 @@ abstract class _Paths {
   static const CHATPAGE = '/chatpage';
   static const PICKBOT = '/pickbot';
   static const VIEWPROFILE = '/viewprofile';
+  static const NOMODEL = '/nomodel';
 }

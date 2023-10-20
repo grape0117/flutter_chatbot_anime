@@ -1,22 +1,20 @@
-import 'package:chat_gpt_flutter/app/model/Profile.dart';
 import 'package:flutter/material.dart';
 import 'package:chat_gpt_flutter/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 
-import '../../../common/bottomNavagation/bottomNavbar.dart';
-import '../controllers/pick_bot_controller.dart';
+import '../../common/bottomNavagation/bottomNavbar.dart';
+import '../pick_bot/controllers/pick_bot_controller.dart';
 
-import 'widget/CardsStackWidget.dart';
+import '../pick_bot/views/widget/CardsStackWidget.dart';
 
 class PickBotView extends GetView<PickBotController> {
   // final List<bool> selectedAvatars;
-  const PickBotView({Key? key, required this.profile}) : super(key: key);
-  final Profile profile;
+  const PickBotView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     Get.put(PickBotController());
-    const title = 'Anime Chat1111';
+    const title = 'Anime Chat';
 
     return MaterialApp(
       title: title,
@@ -27,8 +25,6 @@ class PickBotView extends GetView<PickBotController> {
                 SizedBox(
                   height: 40,
                 ),
-
-                // left corner credit
                 Container(
                   width: double.infinity,
                   child: Stack(children: [
@@ -190,10 +186,9 @@ class PickBotView extends GetView<PickBotController> {
                 SizedBox(
                   height: 5,
                 ),
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 16),
-                  child: CardsStackWidget(),
-                )
+                // Container(
+                //   child: CardsStackWidget(),
+                // )
               ],
             ),
           ),

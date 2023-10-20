@@ -1,39 +1,42 @@
-import 'package:chat_gpt_flutter/app/modules/user/controllers/user_controller.dart';
+import 'package:chat_gpt_flutter/app/modules/pick_bot/views/widget/dragWidget/draggable_controller.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'dart:async';
 
-import 'package:chat_gpt_flutter/app/routes/app_pages.dart';
+import '../../../chat_text/controllers/chat_text_controller.dart';
+import '../../../../model/Profile.dart';
 
-import '../../../model/Profile.dart';
-import '../../../modules/user/controllers/user_controller.dart';
+enum Swipe { left, right, none }
 
-class PickBotController extends GetxController {
-  // UserController userController = Get.find<UserController>();
+class MyAnimationController extends GetxController
+    with SingleGetTickerProviderMixin {
+  late AnimationController animationController;
+
+  final RelativeRectTween relativeRectTween = RelativeRectTween(
+    begin: const RelativeRect.fromLTRB(40, 40, 0, 0),
+    end: const RelativeRect.fromLTRB(0, 0, 40, 40),
+  );
 
   @override
   void onInit() {
     super.onInit();
-    // checkPremium();
+    animationController = AnimationController(
+      vsync: this,
+      duration: Duration(seconds: 1),
+    );
   }
 
   @override
-  void onReady() {
-    super.onReady();
-    print('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
+  void onClose() {
+    animationController.dispose();
+    super.onClose();
   }
+}
 
-  // void checkPremium() {
-  //   Future.delayed(Duration(seconds: 3), () {
-  //     if (userController.user.premium_status == false) {
-  //       Get.toNamed(Routes.PREMIUM);
-  //       // print('HEre');
-  //     } else {
-  //       return;
-  //     }
-  //   });
-  // }
+class CardsStackWidgetController extends GetxController {
+  // DraggableController draggableController = Get.find<DraggableController>();
+  // ChatTextController chatTextController = Get.find();
 
-  final List<Profile> dragabbleItems = [
+  final List<Profile> models = [
     Profile(
         name: 'Belliville',
         description:

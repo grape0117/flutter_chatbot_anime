@@ -27,13 +27,15 @@ import '../modules/pick_bot/views/pick_bot_view.dart';
 import '../modules/pick_bot/bindings/pick_bot_binding.dart';
 import '../modules/view_profile/views/view_profile_view.dart';
 import '../modules/view_profile/bindings/view_profile_binding.dart';
+import '../modules/no_model/views/no_model_view.dart';
+import '../modules/no_model/bindings/no_model_binding.dart';
 
 part 'app_routes.dart';
 
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.HOME;
+  static const INITIAL = Routes.PICKBOT;
 
   static final routes = [
     GetPage(
@@ -48,7 +50,14 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.CHAT_TEXT,
-      page: () => const ChatTextView(),
+      page: () => const ChatTextView(
+        profile: Profile(
+            name: 'name',
+            description: 'description',
+            avatarAsset: 'avatarAsset',
+            zodiacAsset: 'zodiacAsset',
+            message: 'message'),
+      ),
       binding: ChatTextBinding(),
     ),
     GetPage(
@@ -93,25 +102,32 @@ class AppPages {
       ),
       binding: ChatPageBinding(),
     ),
-    // GetPage(
-    //   name: _Paths.NOFRIENDSLIST,
-    //   page: () => const NoFriendsListView(),
-    //   binding: NoFriendsListBinding(),
-    // ),
+    GetPage(
+      name: _Paths.NOMODEL,
+      page: () => NoModelView(),
+      binding: NoModelBinding(),
+    ),
     GetPage(
       name: _Paths.PICKBOT,
-      page: () => const PickBotView(),
+      page: () => const PickBotView(
+        profile: Profile(
+            name: '',
+            description: '',
+            avatarAsset: '',
+            zodiacAsset: '',
+            message: ''),
+      ),
       binding: PickBotBinding(),
     ),
     GetPage(
       name: _Paths.VIEWPROFILE,
       page: () => const ViewProfileView(
         profile: Profile(
-            name: 'name',
-            description: 'description',
-            avatarAsset: 'avatarAsset',
-            zodiacAsset: 'zodiacAsset',
-            message: 'message'),
+            name: '',
+            description: '',
+            avatarAsset: '',
+            zodiacAsset: '',
+            message: ''),
       ),
       binding: ViewProfileBinding(),
     ),

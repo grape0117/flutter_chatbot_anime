@@ -7,12 +7,15 @@ import 'package:get/get.dart';
 import '../../../common/headers.dart';
 import '../../../common/search_text_field_widget.dart';
 import '../controllers/chat_text_controller.dart';
+import '../../../model/Profile.dart';
 
 class ChatTextView extends GetView<ChatTextController> {
-  const ChatTextView({Key? key}) : super(key: key);
+  const ChatTextView({Key? key, required this.profile}) : super(key: key);
+  final Profile profile;
 
   @override
   Widget build(BuildContext context) {
+    print('object');
     return Scaffold(
       body: Obx(() => Column(children: [
             Expanded(
@@ -24,23 +27,11 @@ class ChatTextView extends GetView<ChatTextController> {
                   return textData.index == -999999
                       ? MyTextCard(
                           textData: textData,
-                          profile: Profile(
-                              name: 'name',
-                              description: 'description',
-                              avatarAsset:
-                                  'assets/Sprite/zodiac/img_constellation_Aquarius.png',
-                              zodiacAsset: 'zodiacAsset',
-                              message: 'message'),
+                          profile: profile,
                         )
                       : TextCard(
                           textData: textData,
-                          profile: Profile(
-                              name: 'name',
-                              description: 'description',
-                              avatarAsset:
-                                  'assets/Sprite/zodiac/img_constellation_Aquarius.png',
-                              zodiacAsset: 'zodiacAsset',
-                              message: 'message'),
+                          profile: profile,
                         );
                 },
               ),
