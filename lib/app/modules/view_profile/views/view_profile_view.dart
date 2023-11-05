@@ -191,7 +191,7 @@ class ViewProfileView extends GetView<ViewProfileController> {
                   // SizedBox(height: 20,),
                   Container(
                     // alignment: ,
-                    padding: EdgeInsets.only(top: 50, left: 50, right: 50),
+                    padding: EdgeInsets.only(top: 30, left: 50, right: 50),
                     margin: EdgeInsets.symmetric(
                         horizontal: MediaQuery.of(context).size.width * 0.1),
                     child: Row(

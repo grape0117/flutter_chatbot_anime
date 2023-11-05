@@ -4,7 +4,14 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
 class InfoController extends GetxController {
-  UserController get userController => Get.find<UserController>();
+  @override
+  Future<void> onInit() async {
+    // TODO: implement onInit
+    UserController userController = Get.find();
+    print('object ${userController.user.name}');
+    super.onInit();
+  }
+
   BottomNavbarController get bottomNavbarController =>
       Get.find<BottomNavbarController>();
 }

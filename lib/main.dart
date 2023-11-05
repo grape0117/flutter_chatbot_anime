@@ -15,14 +15,17 @@ class MyApp extends StatelessWidget {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
 
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Anime Chat GPT',
-      theme: ThemeData(
-        primarySwatch: Colors.pink,
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: GetMaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Anime Chat GPT',
+        theme: ThemeData(
+          primarySwatch: Colors.pink,
+        ),
+        initialRoute: AppPages.INITIAL,
+        getPages: AppPages.routes,
       ),
-      initialRoute: AppPages.INITIAL,
-      getPages: AppPages.routes,
     );
   }
 }

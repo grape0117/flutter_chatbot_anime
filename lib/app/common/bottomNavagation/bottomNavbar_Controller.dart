@@ -6,9 +6,10 @@ import 'package:chat_gpt_flutter/app/routes/app_pages.dart';
 
 import '../../modules/pick_bot/views/pick_bot_view.dart';
 import '../../modules/no_friends_list/views/no_friends_list_view.dart';
+import '../../modules/info/views/info_view.dart';
 
 class BottomNavbarController extends GetxController {
-  UserController get userController => Get.find<UserController>();
+  // UserController get userController => Get.find<UserController>();
 
   RxList<bool> isSelectedList = List.generate(4, (index) => false).obs;
   RxInt index = 0.obs;
@@ -31,7 +32,9 @@ class BottomNavbarController extends GetxController {
     } else if (index.value == 2) {
       Get.toNamed(Routes.PURCHASE);
     } else {
-      Get.toNamed(Routes.INFO);
+      print('/////////////');
+      // Get.toNamed(Routes.INFO);
+      Get.to(() => InfoView());
     }
     update();
   }

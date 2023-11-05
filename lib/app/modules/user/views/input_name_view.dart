@@ -31,6 +31,14 @@ class InputNameView extends GetView<UserController> {
               width: 300,
               child: TextField(
                 controller: controller.textEditingController,
+                onChanged: (value) {
+                  if (value == '') {
+                    controller.disableNameButton.value = true;
+                  } else {
+                    controller.disableNameButton.value = false;
+                    print('changed value is ${controller.disableNameButton}');
+                  }
+                },
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.pink)),
@@ -38,38 +46,25 @@ class InputNameView extends GetView<UserController> {
                 ),
               ),
             ),
-            ElevatedButton(
-              onPressed: () {
-                controller.user.name = controller.textEditingController.text;
-                print('DFDFDFDF ${controller.user.name}');
-                print(controller.user.name);
-                if (controller.user.name.length == 0) {
-                  showDialog<String>(
-                    context: context,
-                    builder: (BuildContext context) => AlertDialog(
-                      title: const Text('Notification!'),
-                      content: const Text('Please type your name!'),
-                      actions: <Widget>[
-                        TextButton(
-                          onPressed: () => Navigator.pop(context, 'Cancel'),
-                          child: const Text('Cancel'),
-                        ),
-                        TextButton(
-                          onPressed: () => Navigator.pop(context, 'OK'),
-                          child: const Text('OK'),
-                        ),
-                      ],
-                    ),
-                  );
-                } else {
-                  Get.toNamed(Routes.Avatars);
-                }
-              },
-              child: const Text('Confirm'),
-              style: ButtonStyle(
-                  minimumSize: MaterialStateProperty.all(Size(300, 50)),
-                  backgroundColor:
-                      MaterialStateProperty.all<Color>(Colors.pink)),
+            Obx(
+              () => ElevatedButton(
+                onPressed: controller.disableNameButton == true
+                    ? null
+                    : () async {
+                        // await controller.clearLocalStorage();
+                        controller.storeData(
+                            'user_name', controller.textEditingController.text);
+                        await controller.assignUserInfo();
+                        print('Input Name: ${controller.user.name}');
+                        Get.offNamed(Routes.Avatars);
+                      },
+                child: const Text('Confirm'),
+                style: ButtonStyle(
+                    minimumSize: MaterialStateProperty.all(Size(300, 50)),
+                    backgroundColor: controller.disableNameButton.value == true
+                        ? MaterialStateProperty.all<Color>(Colors.grey)
+                        : MaterialStateProperty.all<Color>(Colors.pink)),
+              ),
             ),
           ]),
         ),

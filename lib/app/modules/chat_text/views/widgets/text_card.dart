@@ -28,9 +28,12 @@ class TextCard extends StatelessWidget {
                 alignment: Alignment.bottomCenter,
                 padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
                 decoration: BoxDecoration(
-                    color: Color.fromARGB(179, 163, 58, 137),
+                    color: Color.fromARGB(179, 250, 7, 189),
                     borderRadius: BorderRadius.circular(10)),
-                child: Text(profile.name),
+                child: Text(
+                  profile.name,
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
               Container(
                 alignment: Alignment.bottomCenter,
@@ -44,18 +47,17 @@ class TextCard extends StatelessWidget {
           ),
           Container(
             alignment: Alignment.centerRight,
-            width: Get.size.width * 0.6,
+            width: MediaQuery.of(context).size.width * 0.7,
             padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
             decoration: BoxDecoration(
                 color: Color.fromRGBO(233, 230, 230, 0.49),
                 border: Border.all(
-                  color: Color.fromRGBO(220, 130, 255, 0.494),
+                  color: Color.fromARGB(179, 250, 7, 189),
                   width: 5,
                 ),
                 borderRadius: BorderRadius.circular(10)),
             child: Text(
               textData.message['content'],
-              // 'The female pirate captain of the grand pirate crew, her hobbies are drinking, adventuring, and robbing young handsome men. She can handle much more than she appears.',
               style: TextStyle(
                   color: Colors.black,
                   fontFamily: 'BalloThambi2-Regular',
@@ -91,20 +93,23 @@ class MyTextCard extends StatelessWidget {
                 alignment: Alignment.bottomLeft,
                 padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
                 decoration: BoxDecoration(
-                    color: Color.fromARGB(179, 163, 58, 137),
+                    color: Color.fromARGB(179, 180, 6, 180),
                     borderRadius: BorderRadius.circular(10)),
-                child: Text(profile.name),
+                child: Text(
+                  profile.name,
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
             ],
           ),
           Container(
             alignment: Alignment.center,
-            width: MediaQuery.of(context).size.width * 0.6,
+            width: MediaQuery.of(context).size.width * 0.7,
             padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
             decoration: BoxDecoration(
-              color: Color.fromARGB(179, 230, 20, 177),
+              color: Color.fromARGB(179, 180, 6, 180),
               border:
-                  Border.all(color: Color.fromARGB(148, 243, 9, 231), width: 5),
+                  Border.all(color: Color.fromARGB(179, 250, 7, 189), width: 5),
               borderRadius: BorderRadius.circular(10),
             ),
             child: Text(

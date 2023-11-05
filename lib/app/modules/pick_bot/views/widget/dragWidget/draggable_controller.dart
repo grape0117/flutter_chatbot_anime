@@ -5,18 +5,41 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../../model/Profile.dart';
+import '../../../../../common/Swipe.dart' as Swipe;
 
-class DraggableController extends GetxController {
+class DraggableController extends GetxController
+    with GetSingleTickerProviderStateMixin {
   CardsStackWidgetController get cardsStackWidgetController =>
       Get.find<CardsStackWidgetController>();
 
-  // AnimationController _controller;1
+  // final left = Swipe.left;
+  // final right = Swipe.right;
+  // final none = Swipe.none;
 
-  // void inInit() {
-  //   _controller = AnimationController(
-  //     vsync: this,
-  //     duration: const Duration(seconds: 1),
-  //   );
-  //   super.onInit();
-  // }
+  late AnimationController animationController;
+  late Animation<double> animation;
+
+  @override
+  void onInit() {
+    super.onInit();
+    initializeAnimation();
+  }
+
+  Future<void> initializeAnimation() async {
+    animationController = AnimationController(
+      duration: Duration(seconds: 10),
+      vsync: this,
+    );
+    animation = Tween<double>(begin: 0.0, end: 10.0 / 360).animate(
+        CurvedAnimation(parent: animationController, curve: Curves.easeIn));
+    await animationController.forward();
+  }
+
+  @override
+  void onClose() {
+    animationController.dispose();
+    super.onClose();
+  }
+
+  ValueNotifier swipeNotifier = ValueNotifier(Swipe.Swipe.none);
 }

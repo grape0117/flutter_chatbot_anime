@@ -39,10 +39,11 @@ class ZodiacView extends GetView<UserController> {
                     itemCount: 12, // Total number of grid items
                     itemBuilder: (context, index) {
                       return GestureDetector(
-                        onTap: () {
+                        onTap: () async {
                           controller.updateZodiacSelection(index);
-                          controller.user.zodiac = zodiac[index];
-                          print('zodiac is  ${controller.user.zodiac}');
+                          controller.disableZodiacButton.value = false;
+                          controller.storeData('user_zodiac', zodiac[index]);
+                          controller.assignUserInfo();
                         },
                         child: Obx(() {
                           return ClipRect(
@@ -127,42 +128,27 @@ class ZodiacView extends GetView<UserController> {
                 Container(
                   height: 60,
                   padding: EdgeInsets.only(bottom: 10),
-                  child: ElevatedButton(
-                    onPressed: () {
-                      print(controller.flag_zodiac);
-                      if (!controller.flag_zodiac) {
-                        print("here is false!");
-                        showDialog<String>(
-                          context: context,
-                          builder: (BuildContext context) => AlertDialog(
-                            title: const Text(''),
-                            content: const Text('Please pick your zodiac!'),
-                            actions: <Widget>[
-                              TextButton(
-                                onPressed: () =>
-                                    Navigator.pop(context, 'Cancel'),
-                                child: const Text('Cancel'),
-                              ),
-                              TextButton(
-                                onPressed: () => Navigator.pop(context, 'OK'),
-                                child: const Text('OK'),
-                              ),
-                            ],
-                          ),
-                        );
-                      } else {
-                        if (controller.flag_edit == true) {
-                          Get.toNamed(Routes.INFO);
-                        } else {
-                          Get.toNamed(Routes.PICKBOT);
-                        }
-                      }
-                    },
-                    child: Text('Confirm'),
-                    style: ButtonStyle(
-                        minimumSize: MaterialStateProperty.all(Size(300, 30)),
-                        backgroundColor:
-                            MaterialStateProperty.all<Color>(Colors.pink)),
+                  child: Obx(
+                    () => ElevatedButton(
+                      onPressed: controller.disableZodiacButton.value == true
+                          ? null
+                          : () async {
+                              if (controller.edit_flag == false) {
+                                Get.offNamed(Routes.PICKBOT);
+                              } else {
+                                Get.offNamed(Routes.INFO);
+                                controller.edit_flag = true;
+                              }
+                            },
+                      child: Text('Confirm'),
+                      style: ButtonStyle(
+                          minimumSize: MaterialStateProperty.all(Size(300, 30)),
+                          backgroundColor: controller
+                                      .disableZodiacButton.value ==
+                                  true
+                              ? MaterialStateProperty.all<Color>(Colors.grey)
+                              : MaterialStateProperty.all<Color>(Colors.pink)),
+                    ),
                   ),
                 )
               ],

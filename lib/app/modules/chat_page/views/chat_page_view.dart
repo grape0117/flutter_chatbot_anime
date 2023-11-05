@@ -37,17 +37,18 @@ class ChatPageView extends GetView<ChatPageController> {
                 children: [
                   // back
                   Positioned(
-                      top: 50,
-                      left: 10,
-                      child: GestureDetector(
-                        onTap: () {
-                          print('back');
-                        },
-                        child: Image.asset(
-                          'assets/Sprite/chat_page/common_btn_back_alpha.png',
-                          width: 50,
-                        ),
-                      )),
+                    top: 50,
+                    left: 10,
+                    child: GestureDetector(
+                      onTap: () {
+                        print('back');
+                      },
+                      child: Image.asset(
+                        'assets/Sprite/chat_page/common_btn_back_alpha.png',
+                        width: 50,
+                      ),
+                    ),
+                  ),
 
                   // clear history
                   Positioned(
@@ -115,19 +116,19 @@ class ChatPageView extends GetView<ChatPageController> {
                     ),
                   ),
                   Positioned(
-                      bottom: 35,
-                      right: 50,
-                      child: GestureDetector(
-                        onTap: () {
-                          String message =
-                              controller.textEditingController.text;
-                          print('send message-----------   $message');
-                        },
-                        child: Image.asset(
-                          'assets/Sprite/chat_page/aichat_userinput_sendBtn.png',
-                          width: 40,
-                        ),
-                      ))
+                    bottom: 35,
+                    right: 50,
+                    child: GestureDetector(
+                      onTap: () {
+                        String message = controller.textEditingController.text;
+                        print('send message-----------   $message');
+                      },
+                      child: Image.asset(
+                        'assets/Sprite/chat_page/aichat_userinput_sendBtn.png',
+                        width: 40,
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),

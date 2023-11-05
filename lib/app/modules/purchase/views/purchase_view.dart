@@ -14,7 +14,9 @@ class PurchaseView extends GetView<PurchaseController> {
     const title = 'Anime Chat';
     Duration myDuration = controller.myDuration();
 
-    return MaterialApp(
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: MaterialApp(
         title: title,
         home: Obx(
           () => Scaffold(
@@ -948,6 +950,8 @@ class PurchaseView extends GetView<PurchaseController> {
                 ),
               ),
               bottomNavigationBar: BottomNavbar()),
-        ));
+        ),
+      ),
+    );
   }
 }

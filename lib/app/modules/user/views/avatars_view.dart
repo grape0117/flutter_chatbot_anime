@@ -38,10 +38,14 @@ class AvatarsView extends GetView<UserController> {
                 itemCount: 12, // Total number of grid items
                 itemBuilder: (context, index) {
                   return GestureDetector(
-                    onTap: () {
+                    onTap: () async {
+                      // await controller.clearLocalStorage();
                       controller.updateSelection(index);
-                      controller.user.avatar = avatar[index];
-                      print('user avatar is ${controller.user.avatar}');
+                      controller.disableAvatarButton.value = false;
+                      // print('user avatar is ${controller.user.avatar}');
+                      controller.storeData('user_avatar', avatar[index]);
+                      controller.assignUserInfo();
+                      // controller.user.avatar = avatar[index];
                     },
                     child: Obx(() {
                       return CircleAvatar(
@@ -88,42 +92,26 @@ class AvatarsView extends GetView<UserController> {
               height: 0,
             ),
             Container(
-              height: 60,
-              padding: EdgeInsets.only(bottom: 10),
-              child: ElevatedButton(
-                onPressed: () {
-                  // Add your button's onPressed logic here
-                  print(controller.flag_avatar);
-                  if (!controller.flag_avatar) {
-                    print("here is false!");
-                    showDialog<String>(
-                      context: context,
-                      builder: (BuildContext context) => AlertDialog(
-                        title: const Text('Notification!'),
-                        content: const Text('Please pick your avatar!'),
-                        actions: <Widget>[
-                          TextButton(
-                            onPressed: () => Navigator.pop(context, 'Cancel'),
-                            child: const Text('Cancel'),
-                          ),
-                          TextButton(
-                            onPressed: () => Navigator.pop(context, 'OK'),
-                            child: const Text('OK'),
-                          ),
-                        ],
-                      ),
-                    );
-                  } else {
-                    Get.toNamed(Routes.ZODIAC);
-                  }
-                },
-                child: Text('Confirm'),
-                style: ButtonStyle(
-                    minimumSize: MaterialStateProperty.all(Size(300, 30)),
-                    backgroundColor:
-                        MaterialStateProperty.all<Color>(Colors.pink)),
-              ),
-            )
+                height: 60,
+                padding: EdgeInsets.only(bottom: 10),
+                child: Obx(
+                  () => ElevatedButton(
+                    onPressed: controller.disableAvatarButton.value == true
+                        ? null
+                        : () async {
+                            print('Avatar ConfirmButton is clicked!');
+                            print(
+                                'Selected Avatar is ${controller.user.avatar}');
+                            Get.offNamed(Routes.ZODIAC);
+                          },
+                    child: Text('Confirm'),
+                    style: ButtonStyle(
+                        minimumSize: MaterialStateProperty.all(Size(300, 30)),
+                        backgroundColor: controller.disableAvatarButton == true
+                            ? MaterialStateProperty.all<Color>(Colors.grey)
+                            : MaterialStateProperty.all<Color>(Colors.pink)),
+                  ),
+                ))
           ],
         ),
       ),

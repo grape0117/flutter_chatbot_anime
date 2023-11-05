@@ -3,6 +3,7 @@ import 'package:chat_gpt_flutter/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 
 import 'bottomNavbar_Controller.dart';
+import '../../modules/user/controllers/user_controller.dart';
 
 class BottomNavbar extends GetView<BottomNavbarController> {
   const BottomNavbar({Key? key}) : super(key: key);
@@ -10,6 +11,8 @@ class BottomNavbar extends GetView<BottomNavbarController> {
   @override
   Widget build(BuildContext context) {
     Get.put<BottomNavbarController>(BottomNavbarController());
+    // Get.put<UserController>(UserController());
+    //  UserController user Controller = Get.find<UserController>();
 
     return Obx(() {
       return BottomNavigationBar(

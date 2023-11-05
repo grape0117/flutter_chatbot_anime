@@ -6,7 +6,7 @@ class SearchTextFieldWidget extends StatelessWidget {
   final VoidCallback? onTap;
   var color;
 
-   SearchTextFieldWidget({
+  SearchTextFieldWidget({
     Key? key,
     this.color,
     this.textEditingController,
@@ -52,13 +52,22 @@ class SearchTextFieldWidget extends StatelessWidget {
                               maxLines: null,
                               decoration: const InputDecoration(
                                   border: InputBorder.none,
+                                  filled: true,
+                                  fillColor: Colors.white,
                                   hintText:
-                                      "Open AI Waiting for your query..."),
+                                      "Other options, enter by yourself..."),
                             ),
                           ),
                         ),
                       ),
                       const SizedBox(width: 15),
+                      // InkWell(
+                      //   onTap: onTap,
+                      //   child: Image.asset(
+                      //     'assets/Sprite/chat_page/aichat_userinput_sendBtn.png',
+                      //     width: 40,
+                      //   ),
+                      // ),
                     ],
                   ),
                 ],
@@ -67,15 +76,10 @@ class SearchTextFieldWidget extends StatelessWidget {
           ),
           const SizedBox(width: 5),
           InkWell(
-            onTap:onTap,
-            child: Container(
-              decoration: BoxDecoration(
-                  color: color, borderRadius: BorderRadius.circular(40)),
-              padding: const EdgeInsets.all(10),
-              child: const Icon(
-                Icons.send,
-                color: Colors.white,
-              ),
+            onTap: onTap,
+            child: Image.asset(
+              'assets/Sprite/chat_page/aichat_userinput_sendBtn.png',
+              width: 40,
             ),
           ),
           const SizedBox(width: 6)

@@ -35,7 +35,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.PICKBOT;
+  static const INITIAL = Routes.CHAT_IMAGE;
 
   static final routes = [
     GetPage(

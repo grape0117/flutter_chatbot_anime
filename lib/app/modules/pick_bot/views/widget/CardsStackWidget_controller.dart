@@ -1,38 +1,16 @@
-import 'package:chat_gpt_flutter/app/modules/pick_bot/views/widget/dragWidget/draggable_controller.dart';
+// import 'package:chat_gpt_flutter/app/modules/pick_bot/views/widget/dragWidget/draggable_controller.dart';
+// import 'package:chat_gpt_flutter/app/modules/pick_bot/views/widget/dragWidget/draggable_controller.dart'
+//     as DragWidget;
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+// import 'package:get/get_navigation/src/routes/default_transitions.dart';
 
-import '../../../chat_text/controllers/chat_text_controller.dart';
+// import '../../../chat_text/controllers/chat_text_controller.dart';
 import '../../../../model/Profile.dart';
+import '../../../../common/Swipe.dart' as Swipe;
 
-enum Swipe { left, right, none }
-
-class MyAnimationController extends GetxController
-    with SingleGetTickerProviderMixin {
-  late AnimationController animationController;
-
-  final RelativeRectTween relativeRectTween = RelativeRectTween(
-    begin: const RelativeRect.fromLTRB(40, 40, 0, 0),
-    end: const RelativeRect.fromLTRB(0, 0, 40, 40),
-  );
-
-  @override
-  void onInit() {
-    super.onInit();
-    animationController = AnimationController(
-      vsync: this,
-      duration: Duration(seconds: 1),
-    );
-  }
-
-  @override
-  void onClose() {
-    animationController.dispose();
-    super.onClose();
-  }
-}
-
-class CardsStackWidgetController extends GetxController {
+class CardsStackWidgetController extends GetxController
+    with GetSingleTickerProviderStateMixin {
   // DraggableController draggableController = Get.find<DraggableController>();
   // ChatTextController chatTextController = Get.find();
 
@@ -68,4 +46,65 @@ class CardsStackWidgetController extends GetxController {
         message:
             "Hmph! Don't get the wrong idea. I'm not tutoring you because I care about you."),
   ].obs;
+
+  late AnimationController animationController;
+  late Animation<double> animation;
+
+  @override
+  void onInit() {
+    super.onInit();
+    initializeAnimation();
+  }
+
+  Future<void> initializeAnimation() async {
+    animationController = AnimationController(
+      duration: const Duration(milliseconds: 500),
+      vsync: this,
+    );
+    animationController.addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        // models.removeLast();
+        animationController.reset();
+        swipeNotifier.value = Swipe.Swipe.none;
+      }
+    });
+    // animation = Tween<double>(begin: 0.0, end: 10.0 / 360).animate(
+    //     CurvedAnimation(parent: animationController, curve: Curves.easeIn));
+    await animationController.forward();
+  }
+
+  @override
+  void onClose() {
+    animationController.dispose();
+    super.onClose();
+  }
+
+  // late AnimationController animationController;
+  // late Animation<Offset> positionAnimation;
+  // late Animation<double> angleAnimation;
+
+  // @override
+  // void onInit() {
+  //   super.onInit();
+  //   animationController = AnimationController(
+  //     vsync: this,
+  //     duration: Duration(milliseconds: 500),
+  //   );
+  //   positionAnimation = Tween<Offset>(
+  //     begin: Offset.zero,
+  //     end: Offset(-1.0, 0.0),
+  //   ).animate(animationController);
+  //   angleAnimation = Tween<double>(
+  //     begin: 0.0,
+  //     end: -0.5,
+  //   ).animate(animationController);
+  // }
+
+  // @override
+  // void onClose() {
+  //   animationController.dispose();
+  //   super.onClose();
+  // }
+
+  ValueNotifier<Swipe.Swipe> swipeNotifier = ValueNotifier(Swipe.Swipe.none);
 }

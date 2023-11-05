@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:chat_gpt_flutter/app/routes/app_pages.dart';
 import 'package:get/get.dart';
+// import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 
 import '../../../common/bottomNavagation/bottomNavbar.dart';
+import '../../../common/bottomNavagation/bottomNavbar_Controller.dart';
 import '../controllers/no_model_controller.dart';
 
 class NoModelView extends GetView<NoModelController> {
-  final NoModelController controller = Get.put(NoModelController());
   NoModelView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    const title = 'Pick your zodiac';
-
     return MaterialApp(
-      title: title,
+      // title: title,
       home: Scaffold(
           body: Center(
             child: Column(
@@ -39,7 +38,8 @@ class NoModelView extends GetView<NoModelController> {
                 GestureDetector(
                   onTap: () {
                     print('No Friends');
-                    controller.bottomNavbarController.index(0);
+                    BottomNavbarController bottomNavbarController = Get.find();
+                    bottomNavbarController.index(0);
                     // Get.toNamed(Routes.PICKBOT);
                   },
                   child: Container(
